@@ -4,7 +4,7 @@
 The Employee Data Management System is a Python application designed to manage employee data efficiently. This project allows users to input, store, retrieve, and manipulate employee information such as names, ages, salaries, and unique IDs. The application provides a simple command-line interface for users to interact with.
 
 ## Features:
-1. Input and store employee data: Users can input employee details such as first name, last name, age, and salary. The data is stored in a text file for easy retrieval and management.
+1. Input and store employee data: Users can input employee details such as first name, last name, date of birth, email, phone number, residential address, job title, department, start date, pesel number, employment status, security clearance level and salary. The data is stored in a text file for easy retrieval and management.
 2. Unique employee IDs: Each employee is assigned a unique ID generated automatically by the system to ensure data integrity and identification.
 3. Error handling: The application includes error handling mechanisms to handle invalid inputs and ensure data consistency.
 4. Tabular representation: Employee data can be displayed in a tabular format for easy viewing and analysis.
