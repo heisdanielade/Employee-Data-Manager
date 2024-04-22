@@ -5,8 +5,8 @@
 
 import json
 from datetime import datetime
-from tabulate import tabulate
 import random
+from utils import tabulate_data
 
 
 # File where employee data is stored
@@ -29,14 +29,6 @@ class DatabaseActions:
                 return json.load(db)
         except (FileNotFoundError, json.JSONDecodeError):
             return []
-
-
-    # function to tabulate the employee data for a more presentable interface
-    @staticmethod
-    def tabulate_data(data):
-        headers = ['Created At', 'ID', 'First Name', 'Last Name', 'Age', 'Salary']
-        table = [list(emp.values()) for emp in data]
-        print(tabulate(table, headers=headers, tablefmt='grid'))
 
 
     # function to add new employee data to the text file
@@ -72,7 +64,7 @@ class DatabaseActions:
                 # if id is found then print the employee's current data
                 found = True
                 print("\n-> Current Data:")
-                DatabaseActions.tabulate_data([emp])
+                tabulate_data([emp])
                 emp['first_name'] = input("-> Enter new first name (leave blank to keep current): ") or emp['first_name']
                 emp['last_name'] = input("-> Enter new last name (leave blank to keep current): ") or emp['last_name']
                 new_age = input("-> Enter new age (leave blank to keep current): ")

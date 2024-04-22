@@ -6,7 +6,7 @@
 
 
 from database import DatabaseActions
-
+from utils import tabulate_data
 
 # Class containing function(s) for possible user actions
 class UserActions:
@@ -37,7 +37,7 @@ class UserActions:
                     employee_data = sorted(employee_data, key=lambda x: x['age'])
                 elif user_action == 'all-sort-sal':
                     employee_data = sorted(employee_data, key=lambda x: x['salary'])
-                DatabaseActions.tabulate_data(employee_data)
+                tabulate_data(employee_data)
             elif user_action == 'exit':
                 break
             else:
