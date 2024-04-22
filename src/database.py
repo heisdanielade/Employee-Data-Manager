@@ -12,43 +12,6 @@ import random
 # File where employee data is stored
 filename = "db.txt"
 
-
-# Class containing function(s) for possible user actions
-class UserActions:
-    @staticmethod
-    def main():
-        print("\n----------------------WELCOME----------------------\n")
-        print("(i) Kindly select which action you would like to perform.\n"
-              "\n- Type 'add' to add new employees"
-              "\n- Type 'all' to get a list of all employee data"
-              "\n- Type 'edit' to edit an existing employee's data"
-              "\n- Type 'all-sort-age' to get list of employees sorted by age"
-              "\n- Type 'all-sort-sal' to get list of employees sorted by salary"
-              "\n- OR Type 'exit' to stop the code.")
-
-
-        # check user input and match to designated function
-        while True:
-            user_action = input("\n-> ACTION: ").lower()
-            if user_action == 'add':
-                number_of_people = int(input("\nHow many employees to add: \n- "))
-                DatabaseActions.add_employees(number_of_people)
-            elif user_action == 'edit':
-                employee_data = DatabaseActions.read_data()
-                DatabaseActions.edit_employee(employee_data)
-            elif user_action in ['all', 'all-sort', 'all-sort-age', 'all-sort-sal']:
-                employee_data = DatabaseActions.read_data()
-                if user_action == 'all-sort-age' or user_action == 'all-sort':
-                    employee_data = sorted(employee_data, key=lambda x: x['age'])
-                elif user_action == 'all-sort-sal':
-                    employee_data = sorted(employee_data, key=lambda x: x['salary'])
-                DatabaseActions.tabulate_data(employee_data)
-            elif user_action == 'exit':
-                break
-            else:
-                print("\n(i) Kindly enter a valid action.")
-
-
 # Class containing function(s) for actions that can be performed on the database
 class DatabaseActions:
     # function to store the employee data in the designated file
@@ -124,9 +87,5 @@ class DatabaseActions:
             print("\n (s) STATUS: Employee data updated successfully.\n")
         else:
             print("\n (s) STATUS: Employee data not found.\n")
-
-
-if __name__ == "__main__":
-    UserActions.main()
 
 
