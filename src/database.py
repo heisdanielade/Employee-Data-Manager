@@ -38,6 +38,7 @@ class DatabaseActions:
         for _ in range(number_of_people):
             first_name = input("\n-> FIRST NAME: \n- ") 
             last_name = input("-> LAST NAME: \n- ")
+            # email = input("-> EMAIL: \n- ") # -----PENDING---
             age = int(input("-> AGE: \n- "))
             salary = float(input("-> MONTHLY SALARY: \n- "))
             time_created = datetime.now().strftime("%d/%b/%y %H:%M:%S")
@@ -65,12 +66,12 @@ class DatabaseActions:
                 found = True
                 print("\n-> Current Data:")
                 tabulate_data([emp])
-                emp['first_name'] = input("-> Enter new first name (leave blank to keep current): ") or emp['first_name']
-                emp['last_name'] = input("-> Enter new last name (leave blank to keep current): ") or emp['last_name']
-                new_age = input("-> Enter new age (leave blank to keep current): ")
+                emp['first_name'] = input("-> FIRST NAME (leave blank to keep current): ") or emp['first_name']
+                emp['last_name'] = input("-> LAST NAME (leave blank to keep current): ") or emp['last_name']
+                new_age = input("-> AGE (leave blank to keep current): ")
                 if new_age:
                     emp['age'] = int(new_age)
-                new_salary = input("-> Enter new salary (leave blank to keep current): ")
+                new_salary = input("-> MONTHLY SALARY (leave blank to keep current): ")
                 if new_salary:
                     emp['salary'] = float(new_salary)
                 break
