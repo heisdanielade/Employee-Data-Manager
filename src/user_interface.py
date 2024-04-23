@@ -20,7 +20,7 @@ class UserActions:
               "\n- Type 'all-sort-age' to get list of employees sorted by age"
               "\n- Type 'all-sort-sal' to get list of employees sorted by salary"
               "\n- Type 'update-all' to update a certain data for all employees"
-              "\n- OR Type 'exit' to stop the code.")
+              "\n- OR Type 'exit' to stop the code.\n")
 
 
         # check user input and match to designated function
