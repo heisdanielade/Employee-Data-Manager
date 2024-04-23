@@ -4,3 +4,6 @@ src/db.txt
 
 # Ignore python cache files when importing modules
 __pycache__/
+
+# Ignore TODO list
+todo.txt
