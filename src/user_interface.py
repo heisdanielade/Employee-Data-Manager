@@ -12,12 +12,12 @@ from utils import tabulate_data
 class UserActions:
     @staticmethod
     def main():
-        print("\n----------------------WELCOME----------------------\n")
+        print("\n\n----------------------WELCOME----------------------\n")
         print("(i) Kindly select which action you would like to perform.\n"
               "\n- Type 'add' to add new employees"
               "\n- Type 'all' to get a list of all employee data"
               "\n- Type 'edit' to edit an existing employee's data"
-              "\n- Type 'all-sort-age' to get list of employees sorted by age"
+              "\n- Type 'all-sort' or 'all-sort-age' to get list of employees sorted by age"
               "\n- Type 'all-sort-sal' to get list of employees sorted by salary"
               "\n- Type 'update-all' to update a certain data for all employees"
               "\n- OR Type 'exit' to stop the code.\n")

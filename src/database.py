@@ -14,6 +14,10 @@ filename = "db.txt"
 
 # Class containing function(s) for actions that can be performed on the database
 class DatabaseActions:
+    # def __init__(self, data, number_of_people):
+    #     self.data = data
+    #     self.number_of_people = number_of_people
+
     # function to store the employee data in the designated file
     @staticmethod
     def store_data(data):
@@ -38,7 +42,8 @@ class DatabaseActions:
         for _ in range(number_of_people):
             first_name = input("\n>> FIRST NAME: \n- ") 
             last_name = input(">> LAST NAME: \n- ")
-            email = input(">> EMAIL: \n- ") # -----PENDING---
+            email = input(">> EMAIL: \n- ")
+            phone_number = input(">> TELEPHONE \n- ")  
             age = input(">> AGE: \n- ")
             salary = input(">> MONTHLY SALARY: \n- ")
             try:
@@ -54,6 +59,7 @@ class DatabaseActions:
                 'first_name': first_name,
                 'last_name': last_name,
                 'email': email,
+                'phone_number': phone_number,
                 'age': age,
                 'salary': salary
             })
@@ -71,6 +77,7 @@ class DatabaseActions:
                 'first_name': employee.get('first_name'),
                 'last_name': employee.get('last_name'),
                 'email': employee.get('email'),
+                'phone_number': employee.get('phone_number'),
                 'age': employee.get('age'),
                 'salary': employee.get('salary')
             }
@@ -84,7 +91,7 @@ class DatabaseActions:
     @staticmethod
     def update_all(employee_data):
         key_to_update = input("\n-> KEY TO UPDATE: ")
-        new_value = input("-> VALUE FOR KEY: ")
+        new_value = input("-> VALUE: ")
     
         employee_data = DatabaseActions.read_data()
         updated = False
@@ -119,6 +126,7 @@ class DatabaseActions:
                 emp['first_name'] = input(">> FIRST NAME (leave blank to keep current): ") or emp['first_name']
                 emp['last_name'] = input(">> LAST NAME (leave blank to keep current): ") or emp['last_name']
                 emp['email'] = input(">> EMAIL (leave blank to keep current): ") or emp['email']
+                emp['phone_number'] = input(">> TELEPHONE (leave blank to keep current): ") or emp['phone_number']
                 new_age = input(">> AGE (leave blank to keep current): ")
                 if new_age:
                     emp['age'] = int(new_age)

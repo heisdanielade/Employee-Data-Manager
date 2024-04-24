@@ -10,6 +10,6 @@ from tabulate import tabulate
 # function to tabulate the employee data for a more presentable interface
 @staticmethod
 def tabulate_data(data):
-    headers = ['Created At', 'ID', 'First Name', 'Last Name', 'Email', 'Age', 'Salary']
+    headers = ['Created At', 'ID', 'First Name', 'Last Name', 'Email', 'Telephone', 'Age', 'Salary']
     table = [list(emp.values()) for emp in data]
     print(tabulate(table, headers=headers, tablefmt='grid'))
