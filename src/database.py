@@ -115,29 +115,36 @@ class DatabaseActions:
     # function to edit employee data by selecting the employee's ID
     @staticmethod
     def edit_employee(employee_data):
-        employee_id = int(input("\n-> Enter the ID of the employee you want to edit: "))
+        try:
+            employee_id = int(input("\n-> Enter the ID of the employee you want to edit: "))
+        except ValueError as e:
+            print("\n(e) ERROR: Invalid Employee ID.\n")
         found = False
-        for emp in employee_data:
-            if emp['id'] == employee_id:
-                # if id is found then print the employee's current data
-                found = True
-                print("\n-> Current Data:")
-                tabulate_data([emp])
-                emp['first_name'] = input(">> FIRST NAME (leave blank to keep current): ") or emp['first_name']
-                emp['last_name'] = input(">> LAST NAME (leave blank to keep current): ") or emp['last_name']
-                emp['email'] = input(">> EMAIL (leave blank to keep current): ") or emp['email']
-                emp['phone_number'] = input(">> TELEPHONE (leave blank to keep current): ") or emp['phone_number']
-                new_age = input(">> AGE (leave blank to keep current): ")
-                if new_age:
-                    emp['age'] = int(new_age)
-                new_salary = input(">> MONTHLY SALARY (leave blank to keep current): ")
-                if new_salary:
-                    emp['salary'] = float(new_salary)
-                break
+
+        try:
+            for emp in employee_data:
+                    if emp['id'] == employee_id:
+                        # if id is found then print the employee's current data
+                        found = True
+                        print("\n-> Current Data:")
+                        tabulate_data([emp])
+                        emp['first_name'] = input(">> FIRST NAME (leave blank to keep current): ") or emp['first_name']
+                        emp['last_name'] = input(">> LAST NAME (leave blank to keep current): ") or emp['last_name']
+                        emp['email'] = input(">> EMAIL (leave blank to keep current): ") or emp['email']
+                        emp['phone_number'] = input(">> TELEPHONE (leave blank to keep current): ") or emp['phone_number']
+                        new_age = input(">> AGE (leave blank to keep current): ")
+                        if new_age:
+                            emp['age'] = int(new_age)
+                        new_salary = input(">> MONTHLY SALARY (leave blank to keep current): ")
+                        if new_salary:
+                            emp['salary'] = float(new_salary)
+                        break
+        except Exception as e:
+            return e
         if found:
             DatabaseActions.store_data(employee_data)
-            print("\n (s) STATUS: Employee data updated successfully.\n")
+            print("\n(s) STATUS: Employee data updated successfully.\n")
         else:
-            print("\n (s) STATUS: Employee data not found.\n")
+            print("\n(s) STATUS: Employee data not found.\n")
 
 
