@@ -30,7 +30,7 @@ class UserActions:
                 # handle incorrect input type error
                 try:
                     number_of_people = int(input("\n>> How many employees to add: \n- "))
-                    DatabaseActions.add_employees(number_of_people)
+                    DatabaseActions.add_data(number_of_people)
                 except ValueError as e:
                     print("\n(e) ERROR: Please enter a number.\n")
             elif user_action == 'edit':

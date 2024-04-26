@@ -37,34 +37,54 @@ class DatabaseActions:
 
     # function to add new employee data to the text file
     @staticmethod
-    def add_employees(number_of_people):
+    def add_data(number_of_people):
         employee_data = DatabaseActions.read_data()
         for _ in range(number_of_people):
+            time_created = datetime.now().strftime("%d/%b/%y %H:%M:%S") 
+            employee_id = random.randint(12468, 92680)
             first_name = input("\n>> FIRST NAME: \n- ") 
             last_name = input(">> LAST NAME: \n- ")
+            birth_date = input(">> BIRTH DATE (dd/mm/yy): \n- ")
             email = input(">> EMAIL: \n- ")
-            phone_number = input(">> TELEPHONE \n- ")  
-            age = input(">> AGE: \n- ")
+            phone_number = input(">> TELEPHONE: \n- ")  
+            home_address = input(">> HOME sADDRESS: \n- ")
+            emergency_contact_info = input(">> EMERGENCY CONTACT: \n- ")
+            pesel_number = input(">> PESEL NUMBER: \n- ")
+            job_title = input(">> JOB TITLE: \n- ")
+            department = input(">> DEPARTMENT: \n- ")
+            employment_date = input(">> EMPLOYMENT DATE (dd/mm/yy): \n- ")
+            employment_status = input(">> EMPLOYMENT STATUS: \n- ") 
+            clearance_level = input(">> CLEARANCE LEVEL: \n- ") 
             salary = input(">> MONTHLY SALARY: \n- ")
             try:
                 salary = float(salary)
             except ValueError as e:
                 # Handle the case where the conversion fails
                 salary = '--'
-            time_created = datetime.now().strftime("%d/%b/%y %H:%M:%S")
-            employee_id = random.randint(12468, 92680)
+            last_modified = '--'
+
             employee_data.append({
                 'created_at': time_created,
                 'id': employee_id,
                 'first_name': first_name,
                 'last_name': last_name,
+                'birth_date': birth_date,
                 'email': email,
                 'phone_number': phone_number,
-                'age': age,
-                'salary': salary
+                'home_address': home_address,
+                'emergency_contact_info': emergency_contact_info,
+                'pesel_number': pesel_number,
+                'job_title': job_title,
+                'department': department,
+                'employment_date': employment_date,
+                'employment_status': employment_status, 
+                'clearance_level': clearance_level, 
+                'salary': salary,
+                'last_modified': last_modified
             })
         DatabaseActions.store_data(employee_data)
         print("\n (s) STATUS: Employee data saved successfully.\n")
+
 
     @staticmethod
     def reorder_keys():
@@ -76,10 +96,19 @@ class DatabaseActions:
                 'id': employee.get('id'),
                 'first_name': employee.get('first_name'),
                 'last_name': employee.get('last_name'),
+                'birth_date': employee.get('birth_date'),
                 'email': employee.get('email'),
                 'phone_number': employee.get('phone_number'),
-                'age': employee.get('age'),
-                'salary': employee.get('salary')
+                'home_address': employee.get('home_address'),
+                'emergency_contact_info':employee.get('emergency_contact_info'),
+                'pesel_number':employee.get('pesel_number'),
+                'job_title':employee.get('job_title'),
+                'department':employee.get('department'),
+                'employment_date':employee.get('employment_date'),
+                'employment_status':employee.get('employment_status'), 
+                'clearance_level':employee.get('clearance_level'), 
+                'salary': employee.get('salary'),
+                'last_modified': employee.get('last_modified')
             }
             reordered_data.append(reordered_employee)
         
@@ -130,14 +159,21 @@ class DatabaseActions:
                         tabulate_data([emp])
                         emp['first_name'] = input(">> FIRST NAME (leave blank to keep current): ") or emp['first_name']
                         emp['last_name'] = input(">> LAST NAME (leave blank to keep current): ") or emp['last_name']
+                        emp['birth_date'] = input(">> BIRTH DATE (dd/mm/yy) (leave blank to keep current): ") or emp['birth_date']
                         emp['email'] = input(">> EMAIL (leave blank to keep current): ") or emp['email']
                         emp['phone_number'] = input(">> TELEPHONE (leave blank to keep current): ") or emp['phone_number']
-                        new_age = input(">> AGE (leave blank to keep current): ")
-                        if new_age:
-                            emp['age'] = int(new_age)
+                        emp['home_address'] = input(">> HOME ADDRESS (leave blank to keep current): ") or emp['home_address']
+                        emp['emergency_contact_info'] = input(">> EMERGENCY CONTACT (leave blank to keep current): ") or emp['emergency_contact_info']
+                        emp['pesel_number'] = input(">> PESEL NUMBER (leave blank to keep current): ") or emp['pesel_number']
+                        emp['job_title'] = input(">> JOB TITLE (leave blank to keep current): ") or emp['job_title']
+                        emp['department'] = input(">> DEPARTMENT (leave blank to keep current): ") or emp['department']
+                        emp['employment_date'] = input(">> EMPLOYMENT DATE (dd/mm/yy) (leave blank to keep current): ") or emp['employment_date']
+                        emp['employment_status'] = input(">> EMPLOYMENT STATUS (leave blank to keep current): ") or emp['employment_status']           
+                        emp['clearance_level'] = input(">> CLEARANCE LEVEL (leave blank to keep current): ") or emp['clearance_level']           
                         new_salary = input(">> MONTHLY SALARY (leave blank to keep current): ")
                         if new_salary:
                             emp['salary'] = float(new_salary)
+                        emp['last_modified'] = datetime.now().strftime("%d/%b/%y %H:%M:%S") 
                         break
         except Exception as e:
             return e
