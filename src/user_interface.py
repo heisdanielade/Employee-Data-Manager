@@ -21,12 +21,13 @@ class UserActions:
               "\n- Type 'all-sort-sal' to get list of employees sorted by salary"
               "\n- Type 'show-info' to show data for a certain employee"
               "\n- Type 'update-all' to update a certain data for all employees"
+              "\n- Type 'delete-emp' to delete an employee"
               "\n- OR Type 'exit' to stop the code.\n")
 
 
         # check user input and match to designated function
         while True:
-            user_action = input("\n-> ACTION: ").lower()
+            user_action = input("\n-> ACTION: ").strip().lower()
             if user_action == 'add':
                 # handle incorrect input type error
                 try:
@@ -49,6 +50,8 @@ class UserActions:
                 DatabaseActions.show_info(employee_data)
             elif user_action == 'update-all':
                     DatabaseActions.update_all(employee_data)
+            elif user_action == 'delete-emp':
+                    DatabaseActions.delete_employee(employee_data)
             elif user_action == 'exit':
                 break
             else:

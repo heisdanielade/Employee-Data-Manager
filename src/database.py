@@ -47,7 +47,7 @@ class DatabaseActions:
             birth_date = input(">> BIRTH DATE (dd/mm/yy): \n- ")
             email = input(">> EMAIL: \n- ")
             phone_number = input(">> TELEPHONE: \n- ")  
-            home_address = input(">> HOME sADDRESS: \n- ")
+            home_address = input(">> HOME ADDRESS: \n- ")
             emergency_contact_info = input(">> EMERGENCY CONTACT: \n- ")
             pesel_number = input(">> PESEL NUMBER: \n- ")
             job_title = input(">> JOB TITLE: \n- ")
@@ -207,4 +207,39 @@ class DatabaseActions:
         else:
             print("\n(s) STATUS: Employee data not found.\n")
 
+
+    # function to edit employee data by selecting the employee's ID
+    @staticmethod
+    def delete_employee(employee_data):
+        try:
+            employee_id = int(input("\n-> Enter the ID of the employee you want to delete: "))
+        except ValueError:
+            print("\n(e) ERROR: Invalid Employee ID.\n")
+            return
+
+        found = False
+        index_to_remove = None
+
+        for index, emp in enumerate(employee_data):
+            if emp['id'] == employee_id:
+                found = True
+                print("\n-> Current Data:")
+                tabulate_data([emp])
+                option = input("\n>> Are you sure you want to delete this employee? (yes/no): ").strip().lower()
+                if option == "yes":
+                    index_to_remove = index
+                elif option == "no":
+                    print("\n(s) STATUS: Operation cancelled.\n")
+                    return
+                else:
+                    print("\n(i) Invalid input.\n")
+                    return
+                break
+
+        if found and index_to_remove is not None:
+            employee_data.pop(index_to_remove)
+            print("\n(s) STATUS: Employee data deleted successfully.\n")
+            DatabaseActions.store_data(employee_data)  # Assuming this function handles storage correctly.
+        elif not found:
+            print("\n(s) STATUS: Employee data not found.\n")
 
