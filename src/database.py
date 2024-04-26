@@ -184,3 +184,27 @@ class DatabaseActions:
             print("\n(s) STATUS: Employee data not found.\n")
 
 
+    # function show info of a particular employee based on ID
+    @staticmethod
+    def show_info(employee_data):
+        try:
+            employee_id = int(input("\n-> Enter Employee ID: "))
+        except ValueError as e:
+            print("\n(e) ERROR: Invalid Employee ID.\n")
+        found = False
+        try:
+            for emp in employee_data:
+                    if emp['id'] == employee_id:
+                        # if id is found then print the employee's current data
+                        found = True
+                        print("\n-> EMPLOYEE DATA:")
+                        tabulate_data([emp]) 
+        except Exception as e:
+            return e
+        if found:
+            DatabaseActions.store_data(employee_data)
+            print("\n(s) STATUS: Employee data retrieved successfully.\n")
+        else:
+            print("\n(s) STATUS: Employee data not found.\n")
+
+

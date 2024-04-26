@@ -17,8 +17,10 @@ class UserActions:
               "\n- Type 'add' to add new employees"
               "\n- Type 'all' to get a list of all employee data"
               "\n- Type 'edit' to edit an existing employee's data"
-              "\n- Type 'all-sort' or 'all-sort-age' to get list of employees sorted by age"
+              "\n- Type 'all-sort' or 'all-sort-id' to get list of employees sorted by ID"
+              "\n- Type 'all-sort-age' to get list of employees sorted by age"
               "\n- Type 'all-sort-sal' to get list of employees sorted by salary"
+              "\n- Type 'show-info' to show data for a certain employee"
               "\n- Type 'update-all' to update a certain data for all employees"
               "\n- OR Type 'exit' to stop the code.\n")
 
@@ -38,11 +40,16 @@ class UserActions:
                 DatabaseActions.edit_employee(employee_data)
             elif user_action in ['all', 'all-sort', 'all-sort-age', 'all-sort-sal']:
                 employee_data = DatabaseActions.read_data()
-                if user_action == 'all-sort-age' or user_action == 'all-sort':
+                if user_action == 'all-sort' or user_action == 'all-sort-id':
+                    employee_data = sorted(employee_data, key=lambda x: x['id'])
+                elif user_action == 'all-sort-age' or user_action == 'all-sort':
                     employee_data = sorted(employee_data, key=lambda x: x['age'])
                 elif user_action == 'all-sort-sal':
                     employee_data = sorted(employee_data, key=lambda x: x['salary'])
                 tabulate_data(employee_data)
+            elif user_action == 'show-info':
+                employee_data = DatabaseActions.read_data()
+                DatabaseActions.show_info(employee_data)
             elif user_action == 'update-all':
                     DatabaseActions.update_all(employee_data)
             elif user_action == 'exit':
