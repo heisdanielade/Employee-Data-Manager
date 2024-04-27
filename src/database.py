@@ -24,7 +24,6 @@ class DatabaseActions:
         with open(filename, "w") as db:
             json.dump(data, db)
 
-
     # function to read the employee data from the text file
     @staticmethod
     def read_data():
@@ -33,7 +32,6 @@ class DatabaseActions:
                 return json.load(db)
         except (FileNotFoundError, json.JSONDecodeError):
             return []
-
 
     # function to add new employee data to the text file
     @staticmethod
@@ -85,7 +83,7 @@ class DatabaseActions:
         DatabaseActions.store_data(employee_data)
         print("\n (s) STATUS: Employee data saved successfully.\n")
 
-
+    # function to reorder keys in the db table
     @staticmethod
     def reorder_keys():
         employee_data = DatabaseActions.read_data()
@@ -115,13 +113,11 @@ class DatabaseActions:
         DatabaseActions.store_data(reordered_data)
         print("\n(s) STATUS: All employee data reordered successfully.\n")
 
-
     # function to allow user to update the value of a particular key for all employees in the database
     @staticmethod
     def update_all(employee_data):
         key_to_update = input("\n-> KEY TO UPDATE: ")
         new_value = input("-> VALUE: ")
-    
         employee_data = DatabaseActions.read_data()
         updated = False
         for employee in employee_data:
@@ -132,14 +128,12 @@ class DatabaseActions:
             elif key_to_update in employee:
                 employee[key_to_update] = new_value # Set a default or placeholder 
                 updated = True
-
         if updated:
             DatabaseActions.store_data(employee_data)
             print(f"\n(s) STATUS: Data for all employees updated successfully.\n")
             DatabaseActions.reorder_keys() # Re-order the newly added key in the user interface table
         else:
             print(f"\n(i) INFO: No update needed. All employees already have this data.\n")
-
 
     # function to edit employee data by selecting the employee's ID
     @staticmethod
@@ -149,7 +143,6 @@ class DatabaseActions:
         except ValueError as e:
             print("\n(e) ERROR: Invalid Employee ID.\n")
         found = False
-
         try:
             for emp in employee_data:
                     if emp['id'] == employee_id:
@@ -183,7 +176,6 @@ class DatabaseActions:
         else:
             print("\n(s) STATUS: Employee data not found.\n")
 
-
     # function show info of a particular employee based on ID
     @staticmethod
     def show_info(employee_data):
@@ -216,10 +208,8 @@ class DatabaseActions:
         except ValueError:
             print("\n(e) ERROR: Invalid Employee ID.\n")
             return
-
         found = False
         index_to_remove = None
-
         for index, emp in enumerate(employee_data):
             if emp['id'] == employee_id:
                 found = True
@@ -235,7 +225,6 @@ class DatabaseActions:
                     print("\n(i) Invalid input.\n")
                     return
                 break
-
         if found and index_to_remove is not None:
             employee_data.pop(index_to_remove)
             print("\n(s) STATUS: Employee data deleted successfully.\n")
