@@ -14,6 +14,7 @@ filename = "db.txt"
 
 # Class containing function(s) for actions that can be performed on the database
 class DatabaseActions:
+    
     # def __init__(self, data, number_of_people):
     #     self.data = data
     #     self.number_of_people = number_of_people
@@ -38,22 +39,22 @@ class DatabaseActions:
     def add_data(number_of_people):
         employee_data = DatabaseActions.read_data()
         for _ in range(number_of_people):
-            time_created = datetime.now().strftime("%d/%b/%y %H:%M:%S") 
+            time_created = datetime.now().strftime("%d/%b/%y %H:%M:%S")
             employee_id = random.randint(12468, 92680)
-            first_name = input("\n>> FIRST NAME: \n- ") 
-            last_name = input(">> LAST NAME: \n- ")
-            birth_date = input(">> BIRTH DATE (dd/mm/yy): \n- ")
-            email = input(">> EMAIL: \n- ")
-            phone_number = input(">> TELEPHONE: \n- ")  
-            home_address = input(">> HOME ADDRESS: \n- ")
-            emergency_contact_info = input(">> EMERGENCY CONTACT: \n- ")
-            pesel_number = input(">> PESEL NUMBER: \n- ")
-            job_title = input(">> JOB TITLE: \n- ")
-            department = input(">> DEPARTMENT: \n- ")
-            employment_date = input(">> EMPLOYMENT DATE (dd/mm/yy): \n- ")
-            employment_status = input(">> EMPLOYMENT STATUS: \n- ") 
-            clearance_level = input(">> CLEARANCE LEVEL: \n- ") 
-            salary = input(">> MONTHLY SALARY: \n- ")
+            first_name = input("\n>> FIRST NAME: \n- ") or 'N/A'
+            last_name = input(">> LAST NAME: \n- ") or 'N/A'
+            birth_date = input(">> BIRTH DATE (dd/mm/yy): \n- ") or 'N/A'
+            email = input(">> EMAIL: \n- ") or 'N/A'
+            phone_number = input(">> TELEPHONE: \n- ") or 'N/A'
+            home_address = input(">> HOME ADDRESS: \n- ") or 'N/A'
+            emergency_contact_info = input(">> EMERGENCY CONTACT: \n- ") or 'N/A'
+            pesel_number = input(">> PESEL NUMBER: \n- ") or 'N/A'
+            job_title = input(">> JOB TITLE: \n- ") or 'N/A'
+            department = input(">> DEPARTMENT: \n- ") or 'N/A'
+            employment_date = input(">> EMPLOYMENT DATE (dd/mm/yy): \n- ") or 'N/A'
+            employment_status = input(">> EMPLOYMENT STATUS: \n- ")  or 'N/A'
+            clearance_level = input(">> CLEARANCE LEVEL: \n- ") or 'N/A'
+            salary = input(">> MONTHLY SALARY: \n- ") or 'N/A'
             try:
                 salary = float(salary)
             except ValueError as e:
@@ -85,6 +86,7 @@ class DatabaseActions:
 
     # function to reorder keys in the db table
     @staticmethod
+    
     def reorder_keys():
         employee_data = DatabaseActions.read_data()
         reordered_data = []
@@ -109,7 +111,6 @@ class DatabaseActions:
                 'last_modified': employee.get('last_modified')
             }
             reordered_data.append(reordered_employee)
-        
         DatabaseActions.store_data(reordered_data)
         print("\n(s) STATUS: All employee data reordered successfully.\n")
 
