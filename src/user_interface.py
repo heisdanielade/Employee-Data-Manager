@@ -1,5 +1,5 @@
 """
-    FILENAME: utils.py
+    FILENAME: user_interface.py
     This file contains program for the user interface which is used 
     to perform actions on the Database.
 """
@@ -9,9 +9,9 @@ import time
 from database import DatabaseActions
 from utils import tabulate_data
 
+
 # Class containing function(s) for possible user actions
 class UserActions:
-    @staticmethod
     def main():
         print("\n\n---------------- EMPLOYEE DATA MANAGEMENT SYSTEM ----------------\n")
         print("\n+ Welcome, type 'help' to see a list of possible commands.\n")

@@ -11,14 +11,18 @@ from utils import tabulate_data
 
 # File where employee data is stored
 filename = "db.txt"
+    
 
 # Class containing function(s) for actions that can be performed on the database
 class DatabaseActions:
     # function to store the employee data in the designated file
     @staticmethod
     def store_data(data):
-        with open(filename, "w") as db:
-            json.dump(data, db)
+        try:
+            with open(filename, "w") as db:
+                json.dump(data, db)
+        except Exception as e:
+            print(f"\n (e) ERROR: {e}\n")
 
     # function to read the employee data from the text file
     @staticmethod
@@ -81,7 +85,6 @@ class DatabaseActions:
 
     # function to reorder keys in the db table
     @staticmethod
-    
     def reorder_keys():
         employee_data = DatabaseActions.read_data()
         reordered_data = []
@@ -230,7 +233,7 @@ class DatabaseActions:
         if found and index_to_remove is not None:
             employee_data.pop(index_to_remove)
             print("\n(s) STATUS: Employee data deleted successfully.\n")
-            DatabaseActions.store_data(employee_data)  # Assuming this function handles storage correctly.
+            DatabaseActions.store_data(employee_data)
         elif not found:
             print("\n(s) STATUS: Employee data not found.\n")
 

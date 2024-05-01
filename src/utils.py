@@ -32,3 +32,5 @@ def tabulate_data(data):
     table = [list(emp.values()) for emp in data]
     print(tabulate(table, headers=headers, tablefmt='grid'))
 
+
+
