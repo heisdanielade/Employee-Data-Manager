@@ -38,6 +38,9 @@ class UserActions:
                 elif user_action == 'sort-salary':
                     employee_data = sorted(employee_data, key=lambda x: x['salary'])
                 tabulate_data(employee_data)
+            elif user_action == 'get-total':
+                employee_data = DatabaseActions.read_data()
+                DatabaseActions.get_total(employee_data)
             elif user_action == 'show-info':
                 employee_data = DatabaseActions.read_data()
                 DatabaseActions.show_info(employee_data)
@@ -57,6 +60,7 @@ class UserActions:
               "\n--DISPLAY--"
               "\n   all               Get a list of all employee data"
               "\n   show-info         Show data for a certain employee"
+              "\n   get-total         Show the total number of employees"
         
               "\n\n--UPDATE--"
               "\n   add-emp           Add new employees"

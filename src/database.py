@@ -14,11 +14,6 @@ filename = "db.txt"
 
 # Class containing function(s) for actions that can be performed on the database
 class DatabaseActions:
-    
-    # def __init__(self, data, number_of_people):
-    #     self.data = data
-    #     self.number_of_people = number_of_people
-
     # function to store the employee data in the designated file
     @staticmethod
     def store_data(data):
@@ -136,6 +131,12 @@ class DatabaseActions:
         else:
             print(f"\n(i) INFO: No update needed. All employees already have this data.\n")
 
+    # function to get the total number of employees in the database
+    @staticmethod
+    def get_total(employee_data):
+        number_of_emps = len(employee_data)
+        print(f"\n+ Total number of employees: {number_of_emps}\n".upper()) 
+    
     # function to edit employee data by selecting the employee's ID
     @staticmethod
     def edit_employee(employee_data):
